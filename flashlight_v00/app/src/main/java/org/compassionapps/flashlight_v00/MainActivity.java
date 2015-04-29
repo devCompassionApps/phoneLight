@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -37,16 +38,53 @@ public class MainActivity extends ActionBarActivity {
             params = camera.getParameters();
         }
 
-        powerSwitchImg.setOnClickListener(new View.OnClickListener() {
+
+
+        powerSwitchImg.setOnTouchListener(new View.OnSwipeTouchListener(this) {
             @Override
-            public void onClick(View v) {
-                if(isFlashlightOn){
+            public void onSwipeDown() {
+                    setFlashlightOff();
+            }
+
+            @Override
+            public void onSwipeUp() {
+                    setFlashlightOn();
+            }
+        });
+
+
+
+
+
+
+
+
+
+            powerSwitchImg.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (isFlashlightOn) {
                     setFlashlightOff();
                 } else {
                     setFlashlightOn();
                 }
+                return false;
             }
         });
+
+
+
+
+//        powerSwitchImg.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (isFlashlightOn) {
+//                    setFlashlightOff();
+//                } else {
+//                    setFlashlightOn();
+//                }
+//            }
+//        });
 
     }
 
@@ -71,7 +109,7 @@ public class MainActivity extends ActionBarActivity {
         camera.setParameters(params);
         camera.startPreview();
         isFlashlightOn = true;
-        powerSwitchImg.setImageResource(R.drawable.lighton);
+        powerSwitchImg.setImageResource(R.drawable.vswitchon);
     }
     private void setFlashlightOff(){
         params = camera.getParameters();
@@ -79,7 +117,7 @@ public class MainActivity extends ActionBarActivity {
         camera.setParameters(params);
         camera.stopPreview();
         isFlashlightOn = false;
-        powerSwitchImg.setImageResource(R.drawable.lightoff);
+        powerSwitchImg.setImageResource(R.drawable.vswitchoff);
     }
 
     protected void onStop(){

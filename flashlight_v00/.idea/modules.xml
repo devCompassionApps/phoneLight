@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/CompassionApps Simple Flashlight.iml" filepath="$PROJECT_DIR$/CompassionApps Simple Flashlight.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/flashlight_v00.iml" filepath="$PROJECT_DIR$/flashlight_v00.iml" />
     </modules>
   </component>
 </project>
