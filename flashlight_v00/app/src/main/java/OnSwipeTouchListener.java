@@ -1,3 +1,8 @@
+import android.content.Context;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+
 /*
 
 Usage:
@@ -10,7 +15,7 @@ Usage:
   }
 
 */
-public class OnSwipeTouchListener implements OnTouchListener {
+public class OnSwipeTouchListener implements View.OnTouchListener {
 
     private GestureDetector gestureDetector;
 
@@ -22,7 +27,7 @@ public class OnSwipeTouchListener implements OnTouchListener {
         return gestureDetector.onTouchEvent(motionEvent);
     }
 
-    private final class GestureListener extends SimpleOnGestureListener {
+    private final class GestureListener extends GestureDetector.SimpleOnGestureListener {
 
         private static final int SWIPE_THRESHOLD = 100;
         private static final int SWIPE_VELOCITY_THRESHOLD = 100;
